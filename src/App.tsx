@@ -1,17 +1,19 @@
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { increment, incrementAmount } from './features/counter/counter-slice'
+import { useAppSelector } from './hooks'
 
 function App() {
-  const count = useSelector((state) => state.counter.value)
+  const count = useAppSelector((state) => state.counter.value)
   const dispatch = useDispatch()
 
   function handleOnClick() {
-    dispatch({ type: 'counter/increment' })
+    dispatch(increment())
   }
   function handleOnClickAmount() {
-    dispatch({ type: 'counter/incrementAmount', payload: 5 })
+    dispatch(incrementAmount(5))
   }
 
   return (
